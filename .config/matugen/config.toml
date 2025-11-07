@@ -1,0 +1,6 @@
+[config]
+
+[templates.waybar]
+input_path = '~/minimal-niri/.config/waybar/template.css'
+output_path = '~/minimal-niri/.config/waybar/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'

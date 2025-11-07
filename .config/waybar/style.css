@@ -1,0 +1,268 @@
+/* @import "./colors.css"; */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+/* Pill group styling */
+.modules-left,
+.modules-center,
+.modules-right {
+    background-color: transparent;
+}
+
+.modules-left > widget:first-child > #waybar > box,
+.modules-left > widget > #waybar > box,
+.modules-center > widget:first-child > #waybar > box,
+.modules-center > widget > #waybar > box,
+.modules-right > widget:first-child > #waybar > box,
+.modules-right > widget > #waybar > box {
+    margin: 4px 6px;
+    padding: 4px 8px;
+    background-color: @surface_container;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid @surface_container_high;
+}
+
+/* Individual module styling */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#battery,
+#backlight,
+#pulseaudio,
+#pulseaudio.microphone,
+#idle_inhibitor,
+#tray {
+    padding: 6px 12px;
+    color: @on_surface;
+    background-color: @surface_container_highest;
+    border-radius: 12px;
+    margin: 2px 3px;
+    transition: all 0.2s ease-in-out;
+}
+
+#idle_inhibitor {
+    padding-right: 15px;
+}
+
+#cpu:hover,
+#memory:hover,
+#battery:hover,
+#backlight:hover,
+#pulseaudio:hover,
+#pulseaudio.microphone:hover,
+#idle_inhibitor:hover,
+#clock:hover {
+    background-color: @surface_bright;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Workspaces */
+#workspaces {
+    padding: 4px 8px;
+    background-color: transparent;
+    margin: 0px;
+}
+
+#workspaces button {
+    padding: 0px;
+    margin: 4px 4px;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: @surface_bright;
+    color: transparent;
+    border-radius: 50%;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#workspaces button:hover {
+    background-color: @outline;
+    min-width: 14px;
+    min-height: 14px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+#workspaces button.active {
+    background-color: @primary;
+    min-width: 28px;
+    min-height: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(163, 201, 254, 0.3);
+}
+
+#workspaces button.urgent {
+    background-color: @error;
+    min-width: 14px;
+    min-height: 14px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Clock */
+#clock {
+    color: @primary;
+    font-weight: 700;
+    padding: 6px 16px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* CPU */
+#cpu {
+    color: @secondary;
+    font-weight: 500;
+}
+
+/* Memory */
+#memory {
+    color: @secondary;
+    font-weight: 500;
+}
+
+#memory.m {
+    color: @secondary;
+}
+
+#memory.h {
+    color: @on_tertiary_container;
+}
+
+#memory.c {
+    color: @error;
+    animation: blink 1s ease-in-out infinite;
+}
+
+/* Battery */
+#battery {
+    color: @on_surface;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @secondary;
+}
+
+#battery.good {
+    color: @secondary;
+}
+
+#battery.warning {
+    color: @on_tertiary_container;
+}
+
+#battery.critical {
+    color: @error;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Backlight */
+#backlight {
+    color: @secondary;
+}
+
+/* PulseAudio */
+#pulseaudio {
+    color: @secondary;
+}
+
+#pulseaudio.muted {
+    color: @outline;
+}
+
+#pulseaudio.microphone {
+    color: @secondary;
+}
+
+#pulseaudio.source-muted {
+    color: @outline;
+}
+
+/* Idle Inhibitor */
+#idle_inhibitor {
+    color: @secondary;
+}
+
+#idle_inhibitor.activated {
+    color: @on_tertiary_container;
+    background-color: @tertiary_container;
+    border-radius: 10px;
+    padding: 4px 8px;
+    padding-right: 11px;
+}
+
+/* Tray */
+#tray {
+    padding: 4px 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @error_container;
+    border-radius: 10px;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+#tray menu {
+    background-color: @surface_container_highest;
+    border: 1px solid @outline_variant;
+    border-radius: 10px;
+}
+
+/* Tooltip styling */
+tooltip {
+    background-color: @surface_container_highest;
+    border: 1px solid @outline_variant;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+tooltip label {
+    color: @on_surface;
+}
+
+
