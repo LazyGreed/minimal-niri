@@ -13,6 +13,7 @@ fi
 
 WALLPAPER_PATH=$(
     find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) 2>/dev/null |
+    sort |
     sed "s|^$WALLPAPER_DIR/||" |
     rofi $ROFI_OPTIONS
 )
