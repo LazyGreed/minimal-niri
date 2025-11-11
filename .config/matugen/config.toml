@@ -1,58 +1,55 @@
 [config]
 
 [templates.gtk3]
-input_path = "~/.config/gtk-3.0/color-template.css"
+input_path = "~/.config/matugen/templates/gtk-template.css"
 output_path = "~/.config/gtk-3.0/colors.css"
 post_hook = "gsettings set org.gnome.desktop.interface gtk-theme ''; gsettings set org.gnome.desktop.interface gtk-theme Sweet-Dark"
 
 [templates.gtk4]
-input_path = "~/.config/gtk-4.0/color-template.css"
+input_path = "~/.config/matugen/templates/gtk-template.css"
 output_path = "~/.config/gtk-4.0/colors.css"
 
 [templates.qt5ct]
-input_path = "~/.config/qt5ct/colors/qtct-template.conf"
+input_path = "~/.config/matugen/templates/qtct-template.conf"
 output_path = "~/.config/qt5ct/colors/matugen.conf"
 
 [templates.qt6ct]
-input_path = "~/.config/qt6ct/colors/qtct-template.conf"
+input_path = "~/.config/matugen/templates/qtct-template.conf"
 output_path = "~/.config/qt6ct/colors/matugen.conf"
 
 [templates.color-scheme]
-input_path = '~/.config/matugen/Matugen.colors'
+input_path = '~/.config/matugen/templates/Matugen.colors'
 output_path = '~/.local/share/color-schemes/Matugen.colors'
 
 [templates.waybar]
-input_path = "~/.config/waybar/colors-template.css"
+input_path = "~/.config/matugen/templates/waybar-template.css"
 output_path = "~/.config/waybar/colors.css"
 post_hook = "pkill -SIGUSR2 waybar"
 
 [templates.rofi]
-input_path = "~/.config/rofi/theme/color-template.rasi"
+input_path = "~/.config/matugen/templates/rofi-template.rasi"
 output_path = "~/.config/rofi/theme/matugen.rasi"
 
 [templates.kitty]
-input_path = "~/.config/kitty/theme-template.conf"
+input_path = "~/.config/matugen/templates/kitty-template.conf"
 output_path = "~/.config/kitty/colors.conf"
 post_hook = "pkill -SIGUSR1 kitty"
 
 [templates.dunst]
-input_path = "~/.config/dunst/dunstrc-colors"
+input_path = "~/.config/matugen/templates/dunstrc-colors"
 output_path = "~/.config/dunst/dunstrc"
 post_hook = "dunstctl reload"
 
 [templates.cava]
-input_path = "~/.config/cava/cava-colors.ini"
+input_path = "~/.config/matugen/templates/cava-colors.ini"
 output_path = "~/.config/cava/config"
 post_hook = "pkill -USR1 cava"
 
 [templates.btop]
-input_path = "~/.config/btop/btop-template.theme"
+input_path = "~/.config/matugen/templates/btop-template.theme"
 output_path = "~/.config/btop/themes/matugen.theme"
 
 [templates.zed]
-input_path = "~/.config/zed/zed-colors.json"
+input_path = "~/.config/matugen/templates/zed-colors.json"
 output_path = "~/.config/zed/themes/matugen.json"
-
-
-
 
