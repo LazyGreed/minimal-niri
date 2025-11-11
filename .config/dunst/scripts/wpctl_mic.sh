@@ -15,8 +15,8 @@ function is_mute {
 }
 
 function send_notification {
-    iconSound="/usr/share/icons/Vivid-Glassy-Dark-Icons/status/24@2x/mic-on.svg"
-    iconMuted="/usr/share/icons/Vivid-Glassy-Dark-Icons/status/24@3x/mic-off.svg"
+    iconSound="/usr/share/icons/candy-icons/status/scalable/mic-on.svg"
+    iconMuted="/usr/share/icons/candy-icons/status/scalable/mic-off.svg"
 
     if is_mute; then
         dunstify -i $iconMuted -r 2593 -u normal "muted"

@@ -5,7 +5,7 @@ function get_brightness {
 }
 
 function send_notification {
-    icon="/usr/share/icons/Vivid-Glassy-Dark-Icons/devices/32/video-display-brightness.svg"
+    icon="/usr/share/icons/candy-icons/preferences/scalable/preferences-desktop-display.svg"
     brightness=$(get_brightness)
     bar=$(seq -s "─" 0 $((brightness / 3)) | sed 's/[0-9]//g')
     

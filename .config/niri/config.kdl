@@ -22,6 +22,12 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
+
 output "eDP-2" {
     mode "1920x1080@144.001"
     position x=0 y=0
@@ -42,8 +48,8 @@ environment {
 }
 
 cursor {
-    xcursor-theme "catppuccin-mocha-light-cursors"
-    xcursor-size 24
+    xcursor-theme "catppuccin-mocha-dark-cursors"
+    xcursor-size 20
 
     hide-when-typing
 }
@@ -94,6 +100,7 @@ animations {
 
 window-rule {
     match app-id=r#"kitty"#
+    match app-id=r#"discord"#
 
     default-column-width { proportion 0.75; }
 }
