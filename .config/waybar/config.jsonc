@@ -1,175 +1,155 @@
 {
     "layer": "top",
     "position": "top",
-    // "height": 37, 
-    "width": 1910,
-    "spacing": 4, // Gaps between modules (4px)
-    
     "modules-left": [
-        "group/pill#left1",
-        "group/pill#left2"
+        "group/left1",
+        "group/left2"
     ],
-
-    "group/pill#left1": {
+    "group/left1": {
         "orientation": "inherit",
         "modules": [
-            "cpu",
             "memory"
         ]
     },
-
-    "group/pill#left2": {
+    "group/left2": {
         "orientation": "inherit",
         "modules": [
+            "clock",
             "niri/workspaces"
         ]
     },
-
     "modules-center": [
-        "group/pill#center"
+        "niri/window"
     ],
-
-    "group/pill#center": {
+    "modules-right": [
+        "group/right1",
+        "group/right2"
+    ],
+    "group/right1": {
         "orientation": "inherit",
         "modules": [
-		        "idle_inhibitor",
-            "clock"
-        ]
-    },
-
-    "modules-right": [
-        "group/pill#right1",
-        "group/pill#right2"
-    ],
-
-    "group/pill#right1": {
-        "orientation": "inherit",
-        "modules": [    
-		        "battery",
-		        "backlight",
-		        "pulseaudio",
+            "battery",
+            "backlight",
+            "pulseaudio",
             "pulseaudio#microphone"
         ]
     },
-
-    "group/pill#right2": {
+    "group/right2": {
         "orientation": "inherit",
         "modules": [
             "tray"
         ]
     },
-
+    "memory": {
+        "interval": 30,
+        "format": "󰍛  {used}G",
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
+    },
+    "niri/window": {
+        "format": "{}",
+        "icon": true,
+        "icon-size": 14,
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+            "empty": ""
+        },
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
+    },
     "clock": {
         "format": "{:%R}",
+        "rotate": 0,
         "format-alt": "{:%R \udb80\udced %d\u00b7%m\u00b7%y}",
-        "rotate": 0
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     },
-
-    "niri/workspaces": {
-        "all-outputs": true,
-        "disable-scroll": false
-    },
-
-    "cpu": {
-        "interval": 10,
-            "format": "󰍛 {usage}%",
-            "rotate": 0,
-            "format-alt": "{icon0}{icon1}{icon2}{icon3}",
-            "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
-    },
-
-    "memory": {
-        "states": {
-            "c": 90,
-            "h": 60,
-            "m": 30
-        },
-        "interval": 30,
-        "format": "\udb83\udf86 {used}GB",
-        "rotate": 0,
-        "format-m": "\udb83\udf85 {used}GB",
-        "format-h": "\udb81\udcc5 {used}GB",
-        "format-c": "\uf421 {used}GB",
-        "format-alt": "\udb83\udf86 {percentage}%",
-        "max-length": 10,
-        "tooltip": true,
-        "tooltip-format": "\udb83\udf86 Memory usage: {percentage}%\n\ue266 Used: {used:0.2f}GB / {total:0.2f}GB\n\uf85a Available: {avail:0.2f}GB\n\uf233 Swap used: {swapUsed:0.2f}GB / {swapTotal:0.2f}GB ({swapPercentage}%)"
-    },
-
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "rotate": 0,
-        "format-icons": {
-            "activated": " \udb80\udd76 ",
-            "deactivated": " \udb81\udeca "
-        },
-        "justify": "center",
-        "tooltip": "true",
-        "tooltip-format-activated": "<span foreground='#98c379'>\udb80\udd76 Caffeine Mode Active</span>\nPrevents system from going to sleep",
-        "tooltip-format-deactivated": "<span foreground='#e06c75'>\udb81\udeca Caffeine Mode Inactive</span>\nSystem will follow normal power settings"
-    },
-
     "battery": {
-        "states": {
-            "good": 80,
-            "warning": 30,
-            "critical": 20
-        },
         "format": "{icon} {capacity}%",
         "rotate": 0,
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     },
-
     "backlight": {
         "rotate": 0,
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "brightnessctl s +5%",
-        "on-scroll-down": "brightnessctl s 5-%",
+        "format": "{icon} {percent}% ",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        "on-scroll-up": "~/.config/dunst/scripts/brightnessctl.sh up",
+        "on-scroll-down": "~/.config/dunst/scripts/brightnessctl.sh down",
         "min-length": 6,
         "tooltip": true,
         "tooltip-format": "Backlight level: {icon} {percent}%"
     },
-
     "pulseaudio": {
         "format": "{icon} {volume}",
         "rotate": 0,
-        "format-muted": "婢",
-        "on-click": "pavucontrol -t 3",
-        "on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_SINK@ 2%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_SINK@ 2%-",
+        "format-muted": " ",
+        "on-click-right": "pavucontrol -t 3",
+        "on-click": "~/.config/dunst/scripts/wpctl.sh toggle",
+        "on-scroll-up": "~/.config/dunst/scripts/wpctl.sh up",
+        "on-scroll-down": "~/.config/dunst/scripts/wpctl.sh down",
         "tooltip-format": "{icon} {desc} // {volume}%",
-        "scroll-step": 5,
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         }
     },
-
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "rotate": 0,
-        "format-source": "\uf86b",
-        "format-source-muted": "\uf131 ",
-        "on-click": "pavucontrol -t 4",
-        "on-click-right": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 10%-",
-        "tooltip-format": "{format_source} {source_desc} // {source_volume}%",
-        "scroll-step": 5
+        "format-source": "",
+        "format-source-muted": "",
+        "on-click-right": "pavucontrol -t 4",
+        "on-click": "~/.config/dunst/scripts/wpctl_mic.sh toggle",
+        "on-scroll-up": "~/.config/dunst/scripts/wpctl_mic.sh up",
+        "on-scroll-down": "~/.config/dunst/scripts/wpctl_mic.sh down",
+        "tooltip-format": "{format_source} {source_desc} // {source_volume}%"
     },
-
     "tray": {
-        "icon-size": 18,
-        "spacing": 1
+        "icon-size": 14,
+        "spacing": 5,
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     }
 }
