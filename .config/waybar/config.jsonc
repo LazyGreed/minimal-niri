@@ -14,6 +14,7 @@
     "group/left2": {
         "orientation": "inherit",
         "modules": [
+            "idle_inhibitor",
             "clock",
             "niri/workspaces"
         ]
@@ -39,6 +40,13 @@
         "modules": [
             "tray"
         ]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰅶",
+            "deactivated": "󰛊"
+        }
     },
     "memory": {
         "interval": 30,

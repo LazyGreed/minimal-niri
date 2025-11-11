@@ -49,9 +49,16 @@ tooltip {
 #battery:hover,
 #backlight:hover,
 #pulseaudio:hover,
-#memory:hover {
+#memory:hover,
+#idle_inhibitor:hover {
     transition: all .3s ease;
     color: @tertiary;
+}
+
+#idle_inhibitor {
+    padding: 0px 5px;
+    color: @on_background;
+    transition: all .3s ease;
 }
 
 #backlight {
