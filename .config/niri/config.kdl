@@ -72,6 +72,7 @@ layout {
 
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
+spawn-at-startup "udiskie"
 // spawn-at-startup "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
