@@ -8,6 +8,8 @@
     "group/left1": {
         "orientation": "inherit",
         "modules": [
+            "disk",
+            "disk#external",
             "memory"
         ]
     },
@@ -40,6 +42,16 @@
         "modules": [
             "tray"
         ]
+    },
+    "disk": {
+        "path": "/",
+        "interval": 30,
+        "format": "  {percentage_used}%"
+    },
+    "disk#external": {
+        "path": "/mnt/data",
+        "interval": 30,
+        "format": "  {percentage_used}%"
     },
     "idle_inhibitor": {
         "format": "{icon}",

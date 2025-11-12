@@ -14,7 +14,8 @@ window#waybar.empty .modules-center {
     box-shadow: 0px 0px 0px 0;
 }
 
-#left1, #left2 {
+#left1,
+#left2 {
     padding:7px;
     margin:10 0 5 10;
     border-radius:10px;
@@ -55,32 +56,17 @@ tooltip {
     color: @tertiary;
 }
 
-#idle_inhibitor {
+#idle_inhibitor,
+#disk,
+#external,
+#backlight,
+#memory,
+#clock,
+#battery,
+#workspace {
     padding: 0px 5px;
     color: @on_background;
     transition: all .3s ease;
-}
-
-#backlight {
-    padding: 0px 0px;
-    color: @on_background;
-    transition: all .3s ease;
-}
-
-#memory {
-    padding: 0px 5px;
-    color: @on_background;
-    transition: all .3s ease;
-}
-
-#clock {
-    padding: 0px 5px;
-    color: @on_background;
-    transition: all .3s ease;
-}
-
-#workspaces {
-    padding: 0px 5px;
 }
 
 #workspaces button {
@@ -118,12 +104,6 @@ tooltip {
     text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
 }
 
-#battery {
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: @on_background;
-}
-
 #battery.charging {
     color: #26A65B;
 }
@@ -148,7 +128,7 @@ tooltip {
 }
 
 #pulseaudio.muted {
-    padding: 0px 5px;
+    /* padding: 0px 5px; */
 }
 
 #microphone {
