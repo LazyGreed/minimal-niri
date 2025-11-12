@@ -59,12 +59,11 @@ tooltip {
 #idle_inhibitor,
 #disk,
 #external,
-#backlight,
 #memory,
 #clock,
 #battery,
 #workspace {
-    padding: 0px 5px;
+    padding: 0px 3px;
     color: @on_background;
     transition: all .3s ease;
 }
@@ -121,14 +120,15 @@ tooltip {
     animation-direction: alternate;
 }
 
-#pulseaudio {
-    padding: 0px 5px;
-    transition: all .3s ease;
-    color: @on_background;
+#backlight {
+    padding-left: 2px;
 }
 
-#pulseaudio.muted {
-    /* padding: 0px 5px; */
+#pulseaudio {
+    padding-left: 2px;
+    padding-right: 4px;
+    transition: all .3s ease;
+    color: @on_background;
 }
 
 #microphone {
@@ -144,7 +144,6 @@ tooltip {
 #tray {
     padding: 0px 5px;
     transition: all .3s ease;
-
 }
 
 #tray menu * {

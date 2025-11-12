@@ -46,23 +46,33 @@
     "disk": {
         "path": "/",
         "interval": 30,
-        "format": "  {percentage_used}%"
+        "format": "  {percentage_used}%",
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     },
     "disk#external": {
         "path": "/mnt/data",
         "interval": 30,
-        "format": "  {percentage_used}%"
+        "format": "  {percentage_used}%",
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "󰅶",
             "deactivated": "󰛊"
-        }
+        },
+        // fix scroll-crash
+        "on-scroll-up": "true",
+        "on-scroll-down": "true"
     },
     "memory": {
         "interval": 30,
         "format": "󰍛  {used}G",
+        "tooltip-format": "{used}GiB used out of {total}GiB",
         // fix scroll-crash
         "on-scroll-up": "true",
         "on-scroll-down": "true"
@@ -71,6 +81,7 @@
         "format": "{}",
         "icon": true,
         "icon-size": 14,
+        "tooltip": false,
         // fix scroll-crash
         "on-scroll-up": "true",
         "on-scroll-down": "true"
@@ -89,7 +100,7 @@
     "clock": {
         "format": "{:%R}",
         "rotate": 0,
-        "format-alt": "{:%R \udb80\udced %d\u00b7%m\u00b7%y}",
+        "tooltip-format": "{:%A, %B %d, %Y}",
         // fix scroll-crash
         "on-scroll-up": "true",
         "on-scroll-down": "true"
