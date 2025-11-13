@@ -5,8 +5,18 @@ function get_brightness {
 }
 
 function send_notification {
-    icon="/usr/share/icons/candy-icons/preferences/scalable/preferences-desktop-display.svg"
+    # icon="/usr/share/icons/kora/status/symbolic/brightness-symbolic.svg"
     brightness=$(get_brightness)
+    if [ $brightness -le 33 ]; then
+        icon="/usr/share/icons/kora/status/symbolic/brightness-low-symbolic.svg"
+    else
+        if [ $brightness -le 66 ]; then
+            icon="/usr/share/icons/kora/status/symbolic/brightness-medium-symbolic.svg"
+        else
+            icon="/usr/share/icons/kora/status/symbolic/brightness-high-symbolic.svg"
+        fi
+    fi
+
     bar=$(seq -s "─" 0 $((brightness / 3)) | sed 's/[0-9]//g')
     
     dunstify -i "$icon" -r 5555 -u low " $bar"

@@ -15,18 +15,23 @@ function is_mute {
 }
 
 function send_notification {
-    iconSound="/usr/share/icons/candy-icons/status/scalable/audio-volume-high.svg"
-    iconMuted="/usr/share/icons/candy-icons/status/scalable/audio-volume-muted.svg"
+    iconMuted="/usr/share/icons/kora/status/symbolic/audio-volume-muted-symbolic.svg"
 
     if is_mute; then
         dunstify -i $iconMuted -r 2593 -u normal "muted"
     else
         volume=$(get_volume)
-        if [ $volume == 00 ]; then
-    		bar=$(seq --separator="─" 0 33 | sed 's/[0-9]//g')
+        if [ $volume -le 33 ]; then
+            iconSound="/usr/share/icons/kora/status/symbolic/audio-volume-low-symbolic.svg"
         else
-    		bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
+            if [ $volume -le 66 ]; then
+                iconSound="/usr/share/icons/kora/status/symbolic/audio-volume-medium-symbolic.svg"
+            else
+                iconSound="/usr/share/icons/kora/status/symbolic/audio-volume-high-symbolic.svg"
+            fi
         fi
+
+    	bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
         dunstify -i $iconSound -r 2593 -u normal " $bar"
     fi
 }
