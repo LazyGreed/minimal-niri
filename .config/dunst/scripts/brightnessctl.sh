@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 function get_brightness {
-    brightnessctl info | grep Current | cut -d '(' -f 2 | tr '%)' ' '
+    brightnessctl info | grep Current | cut -d '(' -f 2 | cut -d '%' -f 1
 }
 
 function send_notification {
@@ -17,9 +17,10 @@ function send_notification {
         fi
     fi
 
-    bar=$(seq -s "─" 0 $((brightness / 3)) | sed 's/[0-9]//g')
+    bar=$(seq -s "─" 0 $((brightness / 4)) | sed 's/[0-9]//g')
+    ws=$(seq -s "─" $((brightness / 4)) 25 | sed 's/[0-9]//g')
     
-    dunstify -i "$icon" -r 5555 -u low " $bar"
+    dunstify -i "$icon" -r 5555 -u low " $bar   $ws   $brightness%"
 }
 
 case $1 in

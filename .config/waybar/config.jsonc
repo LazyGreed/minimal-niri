@@ -145,11 +145,10 @@
         "on-scroll-up": "~/.config/dunst/scripts/brightnessctl.sh up",
         "on-scroll-down": "~/.config/dunst/scripts/brightnessctl.sh down",
         "min-length": 6,
-        "tooltip": true,
-        "tooltip-format": "Backlight level: {icon} {percent}%"
+        "tooltip": false
     },
     "pulseaudio": {
-        "format": "{icon} {volume}",
+        "format": "{icon} {volume}%",
         "rotate": 0,
         "format-muted": " ",
         "on-click-right": "pavucontrol -t 3",
@@ -168,8 +167,8 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "rotate": 0,
-        "format-source": "",
-        "format-source-muted": "",
+        "format-source": " {volume}%",
+        "format-source-muted": " ",
         "on-click-right": "pavucontrol -t 4",
         "on-click": "~/.config/dunst/scripts/wpctl_mic.sh toggle",
         "on-scroll-up": "~/.config/dunst/scripts/wpctl_mic.sh up",

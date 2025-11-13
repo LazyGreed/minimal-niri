@@ -31,8 +31,9 @@ function send_notification {
             fi
         fi
 
-        bar=$(seq --separator="─" 0 "$((volume / 3))" | sed 's/[0-9]//g')
-        dunstify -i $iconSound -r 2593 -u normal " $bar"
+        bar=$(seq --separator="─" 0 "$((volume / 4))" | sed 's/[0-9]//g')
+        ws=$(seq -s "─" $((volume / 4)) 25 | sed 's/[0-9]//g')
+        dunstify -i $iconSound -r 2593 -u low " $bar   $ws   $volume%"
     fi
 }
 

@@ -139,10 +139,6 @@ tooltip {
     color: @on_background;
 }
 
-#microphone.muted {
-    padding: 0px 5px;
-}
-
 #tray {
     padding: 0px 5px;
     transition: all .3s ease;
