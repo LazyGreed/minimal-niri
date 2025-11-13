@@ -11,13 +11,12 @@ theme="$HOME/.config/rofi/theme/powermenu.rasi"
 uptime="`uptime -p | sed -e 's/up //g'`"
 host=`hostname`
 
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+shutdown=' '
+reboot=' '
+lock=' '
+logout='󰍃 '
+yes=' '
+no=' '
 
 # Rofi CMD
 rofi_cmd() {

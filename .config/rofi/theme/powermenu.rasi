@@ -23,7 +23,7 @@ configuration {
     inputbar-spacing:            30px;
     list-spacing:                30px;
     general-padding:             20px;
-    element-padding:             100px 10px;
+    element-padding:             100px 0px;
     element-radius:              0px;
     general-radius:              0px;
     element-font:                "feather 64";
@@ -86,12 +86,13 @@ dummy {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "niricord";
+    str:                         "minimal-niri";
     padding:                     var(general-padding);
     border-radius:               var(general-radius);
     background-color:            @urgent;
     text-color:                  @background;
 }
+
 prompt {
     enabled:                     true;
     padding:                     var(general-padding);
@@ -158,7 +159,7 @@ element {
     enabled:                     true;
     spacing:                     0px;
     margin:                      0px;
-    padding:                     var(element-padding);
+    padding:                     var(element-padding); 
     border:                      0px solid;
     border-radius:               var(element-radius);
     border-color:                @selected;
@@ -171,8 +172,7 @@ element-text {
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
-    vertical-align:              0;
-    horizontal-align:            0.5;
+    horizontal-align:            0.56;
 }
 element selected.normal {
     background-color:            var(selected);
