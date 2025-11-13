@@ -47,6 +47,8 @@ tooltip {
 }
 
 #clock:hover,
+#window:hover,
+#disk:hover,
 #battery:hover,
 #backlight:hover,
 #pulseaudio:hover,
