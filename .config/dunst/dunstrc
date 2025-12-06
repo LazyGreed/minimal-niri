@@ -35,7 +35,7 @@ show_indicators = yes
 icon_position = left
 min_icon_size = 0
 max_icon_size = 32
-icon_path = /usr/share/icons/kora/actions/:/usr/share/icons/kora/animations/:/usr/share/icons/kora/apps/:/usr/share/icons/kora/categories/:/usr/share/icons/kora/devices/:/usr/share/icons/kora/emblems/:/usr/share/icons/kora/emotes/:/usr/share/icons/kora/mimetypes/:/usr/share/icons/kora/panel/:/usr/share/icons/kora/places/:/usr/share/icons/kora/status/
+icon_path = /usr/share/icons/kora/actions/symbolic/:/usr/share/icons/kora/animations/scalable/:/usr/share/icons/kora/apps/symbolic/:/usr/share/icons/kora/categories/symbolic/:/usr/share/icons/kora/devices/symbolic/:/usr/share/icons/kora/emblems/symbolic/:/usr/share/icons/kora/emotes/symbolic/:/usr/share/icons/kora/mimetypes/symbolic/:/usr/share/icons/kora/panel/24/:/usr/share/icons/kora/places/symbolic/:/usr/share/icons/kora/status/symbolic/
 sticky_history = yes
 history_length = 20
 browser = /usr/bin/xdg-open
@@ -50,23 +50,23 @@ mouse_left_click = close_current
 mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
 separator_color = frame
-frame_color = "#81d3dd"
-highlight = "#81d3dd"
-separator_color= "#899294"
+frame_color = "#ccbeff"
+highlight = "#ccbeff"
+separator_color= "#938f99"
 [experimental]
 per_monitor_dpi = false
 [urgency_low]
 timeout = 2
-background = "#0e1415"
-foreground = "#dee4e4"
-highlight = "#004f55"
+background = "#141318"
+foreground = "#e6e1e9"
+highlight = "#4a3e76"
 [urgency_normal]
 timeout = 3
-background = "#0e1415"
-foreground = "#dee4e4"
-highlight = "#004f55"
+background = "#141318"
+foreground = "#e6e1e9"
+highlight = "#4a3e76"
 [urgency_critical]
 timeout = 0
-background = "#0e1415"
-foreground = "#dee4e4"
+background = "#141318"
+foreground = "#e6e1e9"
 highlight = "#ffb4ab"

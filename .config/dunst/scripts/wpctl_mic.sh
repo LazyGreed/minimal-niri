@@ -40,12 +40,12 @@ function send_notification {
 case $1 in
     up)
         wpctl set-mute @DEFAULT_SOURCE@ 0
-        wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 2%+
+        wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%+
         send_notification
     ;;
 	down)        
         wpctl set-mute @DEFAULT_SOURCE@ 0
-        wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 2%-
+        wpctl set-volume -l 1.0 @DEFAULT_SOURCE@ 10%-
         send_notification
 	;;
 	toggle)

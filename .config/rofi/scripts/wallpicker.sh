@@ -7,7 +7,7 @@ if [ ! -d "$WALLPAPER_DIR" ]; then
     exit 1
 fi
 
-wallpapers=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" \) | sort)
+wallpapers=$(find "$WALLPAPER_DIR" -maxdepth 1 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.mp4" \) | sort)
 if [ -z "$wallpapers" ]; then
     echo "No wallpapers found in $WALLPAPER_DIR"
     exit 1
@@ -36,9 +36,36 @@ while IFS= read -r wallpaper; do
     fi
 done <<< "$wallpapers"
 
+# if [ -n "$img_path" ]; then
+#     swww img "$img_path" --transition-type random --transition-fps 60
+#     matugen image "$img_path"
+# else
+#     echo "Error: Could not find wallpaper file for selection: $selected"
+#     exit 1
+# fi
+
 if [ -n "$img_path" ]; then
-    swww img "$img_path" --transition-type random --transition-fps 60
-    matugen image "$img_path"
+    if [[ "$img_path" =~ \.[mM][pP]4$ ]]; then
+        swww kill 2>/dev/null
+        pkill mpvpaper 2>/dev/null
+
+        mpvpaper -vs -o "loop" ALL "$img_path" &
+
+        cache_img="$HOME/.config/matugen/cache/thumbnail.jpg"
+        ffmpeg -y -i "$img_path" -ss 00:00:01 -vframes 1 "$cache_img" > /dev/null 2>&1
+
+        if [ ! -f "$cache_img" ]; then
+             ffmpeg -y -i "$img_path" -vframes 1 "$cache_img" > /dev/null 2>&1
+        fi
+        
+        matugen image "$cache_img"
+    else
+        pkill mpvpaper 2>/dev/null
+        swww-daemon &>/dev/null &
+
+        swww img "$img_path" --transition-type random --transition-fps 60
+        matugen image "$img_path"
+    fi
 else
     echo "Error: Could not find wallpaper file for selection: $selected"
     exit 1

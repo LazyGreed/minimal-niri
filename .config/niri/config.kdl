@@ -98,14 +98,16 @@ animations {
 window-rule {
     match app-id=r#"kitty"#
     match app-id=r#"discord"#
+    match app-id=r#"firefox"#
 
     default-column-width { proportion 0.75; }
 }
 
 window-rule {
-    match app-id=r#"mpv"#
-    match app-id=r#"steam_app_3513350"#
+    match app-id="^mpv"
+    match app-id="^steam_app_"
 
+    variable-refresh-rate true
     open-fullscreen true
 }
 
@@ -151,6 +153,7 @@ overview {
 
 layer-rule {
     match namespace="^swww-daemon$"
+    match namespace="^mpvpaper"
     place-within-backdrop true
 }
 

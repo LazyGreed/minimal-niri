@@ -43,16 +43,10 @@ post_hook = "dunstctl reload"
 [templates.cava]
 input_path = "~/.config/cava/cava-colors.ini"
 output_path = "~/.config/cava/config"
-post_hook = "pkill -USR1 cava"
 
 [templates.btop]
 input_path = "~/.config/btop/btop-template.theme"
 output_path = "~/.config/btop/themes/matugen.theme"
-
-[templates.zed]
-input_path = "~/.config/zed/zed-colors.json"
-output_path = "~/.config/zed/themes/matugen.json"
-
 
 
 
