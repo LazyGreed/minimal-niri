@@ -1,9 +1,0 @@
-[opener]
-edit = [
-    { run = 'vim "$@"', block = true, desc = "vim" },
-]
-
-mpv_video = [
-    { run = 'mpv "$@"', desc = "open with mpv", block = false },
-]
-
