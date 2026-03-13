@@ -1,5 +1,5 @@
-@define-color bg    #1a1b26; 
-@define-color fg    #a9b1d6; 
+@define-color bg    #1e1e2e;
+@define-color fg    #a9b1d6;
 @define-color blk   #32344a; 
 @define-color red   #f7768e; 
 @define-color grn   #9ece6a; 
@@ -24,7 +24,7 @@ window#waybar {
 #workspaces button {
     padding: 0 6px;
     color: @cyn;
-    background: transparent;
+    background: @bg;
     border-bottom: 3px solid @bg;
 }
 #workspaces button.focused {
@@ -45,11 +45,6 @@ window#waybar {
 
 #workspaces button.urgent {
     background-color: @red;
-}
-
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
 }
 
 #clock,
@@ -73,7 +68,7 @@ button:hover {
     border-bottom: 4px solid @cyn;
 }
 
-#pulseaudio.mic {
+#pulseaudio {
     color: @cyn;
     border-bottom: 4px solid @cyn;
 }

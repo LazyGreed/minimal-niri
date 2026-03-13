@@ -3,15 +3,12 @@
     "position": "top",
     "height": 30, 
     "spacing": 4, 
-
     "modules-left": [
+        "custom/sep",
         "niri/workspaces",
         "custom/sep",
         "niri/window"
     ],
-    "modules-center": [
-    ],
-
     "modules-right": [
         "custom/sep",
         "battery",
@@ -22,13 +19,14 @@
         "custom/sep",
         "disk#data",
         "custom/sep",
+        "pulseaudio",
+        "custom/sep",
         "pulseaudio#mic",
         "custom/sep",
         "clock",
         "custom/sep",
         "tray"
     ],
-
     "niri/workspaces": {
         "disable-click": true,
         "all-outputs": true,
@@ -40,47 +38,33 @@
             "active": ""
         }
     },
-
     "niri/window" : {
         "max-length": 40,
         "seperate-outputs": false
     },
-
     "tray": {
         "spacing": 10
     },
-
     "clock": {
         "format-alt": "{:%Y-%m-%d}"
     },
-
-    "cpu": {
-        "format": "CPU: {usage}%",
-        "tooltip": false
+    "pulseaudio": {
+        "format": "Audio: {volume}%",
+        "format-muted": "Audio: off"
     },
-
-    "memory": {
-        "format": "Mem: {used}GiB"
-    },
-
     "pulseaudio#mic": {
         "format": "{format_source}",
-        "format-source": "Mic: on",
+        "format-source": "Mic: {volume}%",
         "format-source-muted": "Mic: off"
     },
-
     "disk": {
-        "interval": 60,
         "path": "/",
         "format": "home: {percentage_used}%"
     },
-
     "disk#data": {
-        "interval": 60,
         "path": "/mnt/data",
         "format": "data: {percentage_used}%"
     },
-
     "battery": {
         "states": {
             "good": 95,
@@ -89,20 +73,13 @@
         },
         "format": "Bat: {capacity}% {icon} {time}",
         "format-plugged": "{capacity}% ",
-        "format-alt": "Bat {capacity}%",
+        "format-alt": "Bat: {capacity}%",
         "format-time": "{H}:{M}",
         "format-icons": ["", "", "", "", ""]
     },
-
-    "network": {
-        "format": "Online",
-        "format-disconnected": "Disconnected ⚠"
-    },
-
     "backlight": {
         "format": "Backlight: {percent}%"
     },
-
     "custom/sep": {
         "format" : "|",
         "interval" : 0

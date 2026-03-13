@@ -1,6 +1,6 @@
 # Basic
 max-visible=3
-margin=10,10
+# margin=10,10
 default-timeout=5000
 
 # Font

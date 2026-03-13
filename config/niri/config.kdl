@@ -26,16 +26,35 @@ cursor {
     xcursor-theme "catppuccin-mocha-red-cursors"
     
     hide-when-typing
+    hide-after-inactive-ms 1000
 }
 
-output "DP-3" {
+clipboard {
+    disable-primary
+}
+
+output "eDP-1" {
+    mode "1920x1080@144"
+    scale 1.0
+    variable-refresh-rate
+}
+
+output "HDMI-A-5" {
     mode "1920x1080"
+    scale 2.0
+}
+
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 layout {
     gaps 10
-    center-focused-column "always"
+    center-focused-column "never"
     background-color "transparent"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.5
@@ -106,6 +125,10 @@ window-rule {
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="^zen" title="^Library"
+
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 500; }
     open-floating true
 }
 
@@ -126,18 +149,20 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+W hotkey-overlay-title="Open Window switcher: fuzzel" { spawn "/home/k/.config/fuzzel/niri-window-picker.sh"; }
-    Mod+E hotkey-overlay-title="Open file manager: nautilus" { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="Open file manager: yazi" { spawn-sh "kitty -T yazi yazi"; }
     Mod+B hotkey-overlay-title="Open a browser: zen-browser" { spawn "zen-browser"; }
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+A hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: CRTty" { spawn "crtty"; }
 
     Super+Space hotkey-overlay-title="Toggle Waybar visibility" { spawn-sh "pkill -USR1 waybar"; }
     Super+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
     Super+Shift+I { spawn-sh "niri msg output 'eDP-1' on && niri msg output 'HDMI-A-5' off"; }
     Super+Shift+O { spawn-sh "niri msg output 'HDMI-A-5' on && niri msg output 'eDP-1' off"; }
+    Super+Shift+P { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
@@ -156,10 +181,6 @@ binds {
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Down  { move-window-down; }
@@ -204,8 +225,6 @@ binds {
 
     Mod+Shift+Page_Down { move-workspace-down; }
     Mod+Shift+Page_Up   { move-workspace-up; }
-    Mod+Shift+U         { move-workspace-down; }
-    Mod+Shift+I         { move-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -266,9 +285,7 @@ binds {
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
-    // Mod+V { toggle-column-tabbed-display; }
-
-    Print { screenshot; }
+    Print { screenshot show-pointer=false; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
