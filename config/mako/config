@@ -1,16 +1,16 @@
 # Basic
 max-visible=3
-# margin=10,10
+# margin=9,9
 default-timeout=5000
 
 # Font
 font='JetBrains Mono Nerd Font' 12
 
-# Catppuccin Mocha Red
-background-color=#1e1e2e
-text-color=#cdd6f4
-border-color=#f38ba8
-progress-color=over #313244
+# Catppuccin Latte Red
+background-color=#eff1f5
+text-color=#4c4f69
+border-color=#d20f39
+progress-color=over #ccd0da
 
 [urgency=high]
-border-color=#fab387
+border-color=#fe640b

@@ -3,8 +3,8 @@ prefer-no-csd
 input {
     keyboard {
         xkb {
-	    layout "us,kh"
-	    options "grp:alt_space_toggle"
+	        layout "us,kh"
+    	    options "grp:alt_space_toggle"
         }
 	
 	repeat-delay 250
@@ -26,7 +26,6 @@ cursor {
     xcursor-theme "catppuccin-mocha-red-cursors"
     
     hide-when-typing
-    hide-after-inactive-ms 1000
 }
 
 clipboard {
@@ -36,12 +35,11 @@ clipboard {
 output "eDP-1" {
     mode "1920x1080@144"
     scale 1.0
-    variable-refresh-rate
 }
 
 output "HDMI-A-5" {
     mode "1920x1080"
-    scale 2.0
+    scale 1.0
 }
 
 gestures {
@@ -67,7 +65,7 @@ layout {
     focus-ring {
         width 2
         
-	active-color "#f38ba8"
+	    active-color "#d20f39"
         inactive-color "#505050"
     }
 
@@ -82,7 +80,7 @@ layout {
 
 overview {
     zoom 0.25
-    backdrop-color "#11111b"
+    backdrop-color "#dce0e8"
 
     workspace-shadow {
         off
@@ -95,6 +93,12 @@ environment {
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
     
     XDG_CURRENT_DESKTOP "niri"
+
+    GBM_BACKEND "nvidia-drm"
+    __GLX_VENDOR_LIBRARY_NAME "nvidia"
+
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    _JAVA_AWT_WM_NONREPARENTING "1"
 }
 
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
@@ -102,6 +106,8 @@ spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "sh" "-c" "gnome-keyring-daemon --start --components=secrets | while read line; do export $line; done; dbus-update-activation-environment --all"
 spawn-at-startup "udiskie"
 spawn-at-startup "waybar"
+spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "awww img /home/k/Pictures/catppuccin-wallpapers/minimalistic/flamingo-cat.png"
 
 hotkey-overlay {
     skip-at-startup
@@ -111,6 +117,12 @@ screenshot-path "/home/k/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.
 
 animations {
     slowdown 0.5
+}
+
+layer-rule {
+    match namespace="^awww-daemon"
+
+    place-within-backdrop true
 }
 
 window-rule {
@@ -171,8 +183,8 @@ binds {
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     Mod+Tab repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
@@ -294,5 +306,5 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Alt+P { power-off-monitors; }
 }

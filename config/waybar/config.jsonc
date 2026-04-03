@@ -50,12 +50,14 @@
     },
     "pulseaudio": {
         "format": "Audio: {volume}%",
-        "format-muted": "Audio: off"
+        "format-muted": "Audio: off",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "pulseaudio#mic": {
         "format": "{format_source}",
         "format-source": "Mic: {volume}%",
-        "format-source-muted": "Mic: off"
+        "format-source-muted": "Mic: off",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     },
     "disk": {
         "path": "/",

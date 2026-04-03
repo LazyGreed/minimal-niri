@@ -1,14 +1,14 @@
-@define-color bg    #1e1e2e;
-@define-color fg    #a9b1d6;
-@define-color blk   #32344a; 
-@define-color red   #f7768e; 
-@define-color grn   #9ece6a; 
-@define-color ylw   #e0af68; 
-@define-color blu   #7aa2f7; 
-@define-color mag   #ad8ee6; 
-@define-color cyn   #0db9d7; 
-@define-color brblk #444b6a; 
-@define-color white #ffffff; 
+@define-color bg    #eff1f5;
+@define-color fg    #4c4f69;
+@define-color blk   #bcc0cc;
+@define-color red   #d20f39;
+@define-color grn   #e64553;
+@define-color ylw   #df8e1d;
+@define-color blu   #1e66f5;
+@define-color mag   #e64553;
+@define-color cyn   #d20f39;
+@define-color brblk #8c8fa1;
+@define-color white #4c4f69;
 
 * {
     font-family: "JetBrainsMono Nerd Font", monospace;
@@ -36,7 +36,7 @@ window#waybar {
     border-bottom: 3px solid @bg;
 }
 #workspaces button.empty {
-    color: @white;
+    color: @blk;
 }
 #workspaces button.empty.active {
     color: @cyn;
@@ -108,5 +108,5 @@ window#waybar {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: #e6e9ef;
 }

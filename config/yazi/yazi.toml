@@ -1,5 +1,19 @@
 [opener]
-text = [
-    { run = 'nvim "$@"', block = true, desc = "nvim" },
+edit = [
+    { run = "nvim %s", block = true, desc = "nvim" },
 ]
 
+play = [
+    { run = "mpv %s", block = true, desc = "mpv" },
+]
+
+open = [
+    { run = "xdg-open %s", block = true, desc = "open" },
+]
+
+[open]
+rules = [
+    { mime = "text/**", use = "edit" },
+    { mime = "video/**", use = "play" },
+    { mime = "*.pdf", use = "open" }
+]
