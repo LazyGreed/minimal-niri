@@ -33,12 +33,10 @@ clipboard {
 }
 
 output "eDP-1" {
-    mode "1920x1080@144"
-    scale 1.0
+    mode "1920x1080@144.001"
 }
 
-output "HDMI-A-5" {
-    mode "1920x1080"
+/-output "HDMI-A-5" {
     scale 1.0
 }
 
