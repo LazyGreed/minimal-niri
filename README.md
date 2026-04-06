@@ -4,7 +4,6 @@
 
 Some of these packages maybe unnecessary
 
-
 ```bash
 paru -S libva-utils sddm niri xwayland-satellite xdg-desktop-portal-gnome xdg-desktop-portal-gtk kitty tmux neovim telegram-desktop visual-studio-code-bin antigravity zen-browser-bin yazi github-cli udiskie fuzzel hyprlock tailscale catppuccin-gtk-theme-mocha nwg-look qt5ct qt6ct kvantum kvantum-qt5 polkit-gnome ttf-jetbrains-mono-nerd ttf-fira-code waybar mako brightnessctl catppuccin-cursors-mocha whitesur-icon-theme uv mpv wl-clipboard gdu glow --noconfirm
 ```
@@ -35,13 +34,6 @@ Use the script at the repo root:
 - `-v, --verbose`: print additional logs.
 - `-f, --force`: replace existing `~/.config/<name>` entries without backup.
 - `-d, --delete`: with `update`, delete files in repo that do not exist in `~/.config`.
-
-### Safety Behavior
-
-- Default mode is safe: no delete mirroring unless `--delete` is set.
-- During `install`, existing non-matching paths are moved to:
-	`${XDG_STATE_HOME:-$HOME/.local/state}/minimal-niri-backups/<timestamp>/`.
-- Scope is intentionally limited to `config/*` only.
 
 ## Credit
 
