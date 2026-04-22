@@ -23,7 +23,7 @@ input {
 }
 
 cursor {
-    xcursor-theme "catppuccin-mocha-red-cursors"
+    xcursor-theme "catppuccin-mocha-light-cursors"
     
     hide-when-typing
 }
@@ -47,7 +47,7 @@ gestures {
 }
 
 layout {
-    gaps 10
+    gaps 4
     center-focused-column "never"
     background-color "transparent"
     always-center-single-column
@@ -103,9 +103,8 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-at-startup "dbus-update-activation-environment" "--all"
 spawn-at-startup "sh" "-c" "gnome-keyring-daemon --start --components=secrets | while read line; do export $line; done; dbus-update-activation-environment --all"
 spawn-at-startup "udiskie"
-spawn-at-startup "waybar"
-spawn-at-startup "awww-daemon"
-spawn-sh-at-startup "awww img /home/k/Pictures/catppuccin-wallpapers/minimalistic/flamingo-cat.png"
+spawn-at-startup "skwd-daemon"
+spawn-at-startup "ashell"
 
 hotkey-overlay {
     skip-at-startup
@@ -123,22 +122,41 @@ layer-rule {
     place-within-backdrop true
 }
 
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screen-capture"
+}
+
 window-rule {
     draw-border-with-background false
     clip-to-geometry true
 }
 
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id=r#"^org\.telegram\.desktop"#
+    match app-id="^discord"
+
+    block-out-from "screen-capture"
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#1e66f5"
+        inactive-color "#505050"
+    }
 }
 
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="^zen" title="^Library"
+    match app-id="^firefox" title="^Library"
 
     default-column-width { fixed 1000; }
     default-window-height { fixed 500; }
+    
     open-floating true
 }
 
@@ -156,20 +174,18 @@ window-rule {
 }
 
 binds {
-    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+A { spawn "fuzzel"; }
+    Mod+B { spawn "zen-browser"; }
+    Mod+E { spawn-sh "kitty -T yazi yazi"; }
+    Mod+L { spawn "hyprlock"; }
+    Mod+T { spawn "kitty"; }
+    Mod+W { spawn-sh "skwd wall toggle"; }
 
-    Mod+W hotkey-overlay-title="Open Window switcher: fuzzel" { spawn "/home/k/.config/fuzzel/niri-window-picker.sh"; }
-    Mod+E hotkey-overlay-title="Open file manager: yazi" { spawn-sh "kitty -T yazi yazi"; }
-    Mod+B hotkey-overlay-title="Open a browser: zen-browser" { spawn "zen-browser"; }
-    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+A hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Mod+Return hotkey-overlay-title="Open a Terminal: CRTty" { spawn "crtty"; }
-
-    Super+Space hotkey-overlay-title="Toggle Waybar visibility" { spawn-sh "pkill -USR1 waybar"; }
-    Super+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock"; }
-    Super+Shift+I { spawn-sh "niri msg output 'eDP-1' on && niri msg output 'HDMI-A-5' off"; }
-    Super+Shift+O { spawn-sh "niri msg output 'HDMI-A-5' on && niri msg output 'eDP-1' off"; }
-    Super+Shift+P { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    Mod+Space { spawn-sh "pkill -USR1 ashell"; }
+    Mod+Shift+U { spawn-sh "niri msg action set-dynamic-cast-window --id $(niri msg --json pick-window | jq .id)"; }
+    Mod+Shift+I { spawn-sh "niri msg output 'eDP-1' on && niri msg output 'HDMI-A-5' off"; }
+    Mod+Shift+O { spawn-sh "niri msg output 'HDMI-A-5' on && niri msg output 'eDP-1' off"; }
+    Mod+Shift+P { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
@@ -196,58 +212,30 @@ binds {
     Mod+Shift+Down  { move-window-down; }
     Mod+Shift+Up    { move-window-up; }
     Mod+Shift+Right { move-column-right; }
-    Mod+Shift+H     { move-column-left; }
-    Mod+Shift+J     { move-window-down; }
-    Mod+Shift+K     { move-window-up; }
-    Mod+Shift+L     { move-column-right; }
-
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
-    Mod+Ctrl+Home { move-column-to-first; }
-    Mod+Ctrl+End  { move-column-to-last; }
 
     Mod+Ctrl+Left  { focus-monitor-left; }
     Mod+Ctrl+Down  { focus-monitor-down; }
     Mod+Ctrl+Up    { focus-monitor-up; }
     Mod+Ctrl+Right { focus-monitor-right; }
-    Mod+Ctrl+H     { focus-monitor-left; }
-    Mod+Ctrl+J     { focus-monitor-down; }
-    Mod+Ctrl+K     { focus-monitor-up; }
-    Mod+Ctrl+L     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
     Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
-
-    Mod+Page_Down      { focus-workspace-down; }
-    Mod+Page_Up        { focus-workspace-up; }
-    Mod+U              { focus-workspace-down; }
-    Mod+I              { focus-workspace-up; }
-    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
-    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-    Mod+Ctrl+U         { move-column-to-workspace-down; }
-    Mod+Ctrl+I         { move-column-to-workspace-up; }
-
-    Mod+Shift+Page_Down { move-workspace-down; }
-    Mod+Shift+Page_Up   { move-workspace-up; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
-
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
+    
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
     Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
     Mod+Shift+WheelScrollDown      { focus-column-right; }
     Mod+Shift+WheelScrollUp        { focus-column-left; }
+    
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
@@ -260,6 +248,7 @@ binds {
     Mod+7 { focus-workspace 7; }
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
+
     Mod+Shift+1 { move-column-to-workspace 1; }
     Mod+Shift+2 { move-column-to-workspace 2; }
     Mod+Shift+3 { move-column-to-workspace 3; }
@@ -273,16 +262,14 @@ binds {
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
 
-    Mod+Comma  { consume-window-into-column; }
-    Mod+Period { expel-window-from-column; }
-
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
+    
     Mod+D { maximize-column; }
     Mod+F { fullscreen-window; }
+    Mod+Shift+F { toggle-windowed-fullscreen; }
 
-    Mod+Ctrl+F { expand-column-to-available-width; }
     Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
@@ -304,5 +291,5 @@ binds {
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
-    Mod+Alt+P { power-off-monitors; }
+    Mod+P { power-off-monitors; }
 }
